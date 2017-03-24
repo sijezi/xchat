@@ -6,6 +6,6 @@ socket.on('connect', function() {
 
 // events
 socket.on('message', function(data) {
-  console.log('new message');
-  console.log(data.text);
+  var msg = document.querySelector('.textarea');
+  console.log(msg.textContent)
 });
