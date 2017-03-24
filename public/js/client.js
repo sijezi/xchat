@@ -7,5 +7,15 @@ socket.on('connect', function() {
 // events
 socket.on('message', function(data) {
   var msg = document.querySelector('.textarea');
-  console.log(msg.textContent)
+
+});
+
+$('#msgForm').submit('submit', function(ev) {
+var message = $('.textarea');
+var data = {
+  text: message.val()
+};
+console.log(message.val());
+socket.emit('message', {text: message.val()});
+
 });
