@@ -40,6 +40,7 @@ socket.on('chat message', function(data) {
     var newNode = document.createElement("p");
     newNode.innerHTML = data.name +
         ' - ' + ' ' +
+        '<b>'+timestamp + '</b>' +
         ' ' + data.text;
     parent.appendChild(newNode);
 
