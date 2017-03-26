@@ -23,13 +23,16 @@ socket.on('connection', function(connection) {
   connection.on('message', function(data) {
     console.log('Message Recieved: ' + data.text);
     // send to everyone except the sender
-    connection.broadcast.emit('message', data);
+    socket.emit('message', data);
   });
+
+  // data to be passed to the frontend
   connection.emit('message', {
-    text: 'Welcome to the chat application'
+    text: 'You can chat!'
   });
 });
 
+// start the server
 http.listen(process.env.PORT || 3000, function() {
-  console.log('The Server Is Running at localhost:', PORT);
+  console.log('The * server * is running at localhost:', PORT);
 });
