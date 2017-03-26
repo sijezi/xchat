@@ -12,6 +12,12 @@ var socket = require('socket.io')(http);
 
 // middleware for rendering
 app.use(express.static(__dirname + '/public'));
+app.use(function(err, req, next){
+  if(err.status !== 404) {
+    return next();
+  }
+  res.send(err.message || '** No Errors Found **');
+});
 socket.on('connection', function(connection) {
   console.log('User connected via socket.io');
   connection.on('message', function(data) {
@@ -25,5 +31,5 @@ socket.on('connection', function(connection) {
 });
 
 http.listen(process.env.PORT || 3000, function() {
-  console.log('The Server Is Running at localhost:', process.env.PORT || 3000);
+  console.log('The Server Is Running at localhost:', PORT);
 });
