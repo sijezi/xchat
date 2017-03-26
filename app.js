@@ -9,15 +9,24 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var socket = require('socket.io')(http);
-
+//var url = require('url');
+app.get('/app.html', function(req, res) {
+  console.log(req.query.name);
+   //res.send('Response sent to client::'+ req.query.name);
+   res.sendFile( __dirname + "/public/" + "app.html" );
+});
 // middleware for rendering
 app.use(express.static(__dirname + '/public'));
+
+//console.log(req.query.name);
+
 app.use(function(err, req, next){
   if(err.status !== 404) {
     return next();
   }
   res.send(err.message || '** No Errors Found **');
 });
+
 socket.on('connection', function(connection) {
   console.log('User connected via socket.io');
   connection.on('chat message', function(data) {
@@ -33,6 +42,6 @@ socket.on('connection', function(connection) {
 });
 
 // start the server
-http.listen(process.env.PORT || 3000, function() {
+http.listen(process.env.PORT || 3000, function(req,res) {
   console.log('The * server * is running at localhost:', PORT);
 });

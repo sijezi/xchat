@@ -25,11 +25,15 @@
     }
 </style>
 <body>
-  <h1>Login to Chat</h1>
-  <form action="/app.html" autocomplete="off">
-    <label for="name">Choice a name: </label>
-    <input type="text" name="name" id="username" required>
-    <input type="submit">
-  </form>
+  <button id="changeName">Change Name</button>
+    <div class="chat-area">
+        <p id="childElement"></p>
+    </div>
+    <form id="chat-form" autocomplete="off">
+        <input type="text" id="msg">
+        <input type="submit">
+    </form>
+    <script src="./lib/socket.io.js"></script>
+    <script src="./js/client.js"></script>
 </body>
 </html>
