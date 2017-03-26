@@ -20,14 +20,14 @@ app.use(function(err, req, next){
 });
 socket.on('connection', function(connection) {
   console.log('User connected via socket.io');
-  connection.on('message', function(data) {
+  connection.on('chat message', function(data) {
     console.log('Message Recieved: ' + data.text);
-    // send to everyone except the sender
-    socket.emit('message', data);
+    // send to everyone
+    socket.emit('chat message', data);
   });
 
   // data to be passed to the frontend
-  connection.emit('message', {
+  connection.emit('chat message', {
     text: 'You can chat!'
   });
 });
