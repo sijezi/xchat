@@ -1,33 +1,29 @@
 /**
- * Use whatever is in the environment variable PORT
- * If there is nothing there, resort to 3000
+ * Set the environment variable for Heroku
+ * If it is not available, use PORT 3000
  */
 var PORT = process.env.PORT || 3000;
 
-// Import the express framework
+// include these modules
 var express = require('express');
-// Run express
 var app = express();
-// Import the http built-in moodule and save it to the http varaible
 var http = require('http').Server(app);
-
-// passing http.Server instance
 var socket = require('socket.io')(http);
 
+// middleware for rendering
 app.use(express.static(__dirname + '/public'));
+socket.on('connection', function(connection) {
+  console.log('User connected via socket.io');
+  connection.on('message', function(data) {
+    console.log('Message Recieved: ' + data.text);
+    // send to everyone except the sender
+    connection.broadcast.emit('message', data);
+  });
+  connection.emit('message', {
+    text: 'Welcome to the chat application'
+  });
+});
 
-// listen for events
-socket.on('connection', function(socket) {
-  var data = {text: 'my first message'};
-  socket.on('msg', function(msg) {
-    console.log('message recieved', msg.text);
-    // send to all except the sender
-    socket.broadcast.emit('message', msg);
-  })
-    console.log('User connected via socket.io');
-    socket.emit('message', data);
-})
-// start the Server
-http.listen(PORT, function() {
-    console.log('Server running');
+http.listen(process.env.PORT || 3000, function() {
+  console.log('The Server Is Running at localhost:', process.env.PORT || 3000);
 });
