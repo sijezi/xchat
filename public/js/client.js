@@ -29,22 +29,3 @@ form.addEventListener('submit', function(event) {
     });
     input.value = '';
 });
-
-var now = (new Date()).toUTCString()
-
-// store the FORM object in variable
-//var form = $('#message-form');
-// grab the user input
-//var input = $('#msg');
-// form event-listener
-//form.submit(function(e) {
-// Cancels the event if it is cancelable,
-// without stopping further propagation of the event.
-//e.preventDefault();
-// send message out to others
-//socket.emit('message', {
-//text: input.val()
-//})
-// clear the input field after submit
-//input.val('');
-//});
