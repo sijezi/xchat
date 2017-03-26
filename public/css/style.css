@@ -1,0 +1,8 @@
+input#msg {
+  width: 600px;
+}
+
+div.chat-area.card {
+  height: 600px;
+  width: 600px;
+}

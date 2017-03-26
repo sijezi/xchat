@@ -1,6 +1,8 @@
 var nameChange = document.getElementById('changeName');
 var form = document.getElementById('chat-form');
 var input = document.getElementById('msg');
+var usr = document.querySelector('.is-5');
+var usrHash = document.querySelector('.is-6');
 
 /*
  * grab query string params
@@ -43,6 +45,8 @@ socket.on('chat message', function(data) {
         '<b>'+timestamp + '</b>' +
         ' ' + data.text;
     parent.appendChild(newNode);
+    usr.innerHTML += data.name;
+      usrHash.innerHTML += data.name;
 
 });
 

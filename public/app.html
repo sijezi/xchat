@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
     <meta name="theme-color" content="#ffffff">
     <!-- Libs -->
     <script src="./lib/jquery-3.2.0.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/bulma.css">
     <title>socket.io chat</title>
 </head>
@@ -25,15 +27,29 @@
     }
 </style>
 <body>
-  <button id="changeName">Change Name</button>
-    <div class="chat-area">
-        <p id="childElement"></p>
+  <h1 class="title is-1">ChatBox</h1>
+    <div class="container">
+        <button id="changeName" class="button is-warning">Change Name</button>
+        <div class="chat-area card is-light">
+            <p id="childElement" class="content"></p>
+            <div class="media-content">
+      <p class="title is-5"></p>
+      <p class="subtitle is-6">@</p>
     </div>
-    <form id="chat-form" autocomplete="off">
-        <input type="text" id="msg">
-        <input type="submit">
-    </form>
+    <br>
+    <br>
+        </div>
+        <div>
+        <form id="chat-form" autocomplete="off">
+            <input id="msg" placehodler="type here" class="input is-primary">
+            <br>
+            <br>
+            <input type="submit" class="">
+        </form>
+      </div>
+    </div>
     <script src="./lib/socket.io.js"></script>
     <script src="./js/client.js"></script>
 </body>
+
 </html>
