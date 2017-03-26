@@ -11,20 +11,26 @@ function qs(str) {
     return half !== undefined ? decodeURIComponent(half.split('&')[0]) : null;
 }
 
+var name = qs('name');
+
 // change username
 nameChange.addEventListener('click', function() {
-  window.history.back();
+    window.history.back();
 });
 
 var socket = io();
 // Successful connection made to the server
 socket.on('connect', function() {
+  socket.emit('joined', {
+    name: name
+  });
     //console.log('Connected to socket.io server');
 });
 
 socket.on('chat message', function(data) {
     // pure javascript timestamp
     var now = new Date();
+    console.log(data.name)
     // convert timestamp to human readable format
     var timestamp = now.toLocaleTimeString();
 
@@ -32,8 +38,8 @@ socket.on('chat message', function(data) {
     console.log(data.text);
     var parent = document.getElementById('childElement').parentNode;
     var newNode = document.createElement("p");
-    newNode.innerHTML = timestamp +
-        ' - ' + ' ' + qs('name') +
+    newNode.innerHTML = data.name +
+        ' - ' + ' ' +
         ' ' + data.text;
     parent.appendChild(newNode);
 
@@ -46,7 +52,8 @@ form.addEventListener('submit', function(event) {
         return false;
     }
     socket.emit('chat message', {
-        text: input.value
+        text: input.value,
+        name: name
     });
     input.value = '';
 });
