@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,27 +25,28 @@
         margin-top: 100px;
     }
 </style>
+
 <body>
-  <h1 class="title is-1">ChatBox</h1>
     <div class="container">
-        <button id="changeName" class="button is-warning">Change Name</button>
-        <div class="chat-area card is-light">
+        <button id="changeName" class="button is-info">Click Here To Change Chat Name</button>
+        <div class="chat-area card">
             <p id="childElement" class="content"></p>
             <div class="media-content">
-      <p class="title is-5"></p>
-      <p class="subtitle is-6">@</p>
-    </div>
-    <br>
-    <br>
+                <!-- <p class="subtitle is-6"></p> -->
+            </div>
+            <br>
+            <br>
         </div>
         <div>
-        <form id="chat-form" autocomplete="off">
-            <input id="msg" placehodler="type here" class="input is-primary">
-            <br>
-            <br>
-            <input type="submit" class="">
-        </form>
-      </div>
+            <form id="chat-form" autocomplete="off">
+                <div class="field">
+                    <p class="control">
+                        <input id="msg" placeholder="type your message here" class="input is-primary">
+                    </p>
+                </div>
+                <br>
+            </form>
+        </div>
     </div>
     <script src="./lib/socket.io.js"></script>
     <script src="./js/client.js"></script>

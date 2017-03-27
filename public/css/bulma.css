@@ -2608,12 +2608,12 @@ input[type="submit"].button {
 }
 
 .tag.is-success {
-  background-color: #23d160;
+  background-color: #fafafa;
   color: #fff;
 }
 
 .tag.is-warning {
-  background-color: #ffdd57;
+  background-color: #ff5257;
   color: rgba(0, 0, 0, 0.7);
 }
 
@@ -2678,6 +2678,7 @@ input[type="submit"].button {
 
 .title.is-1 {
   font-size: 3rem;
+  text-align:center;
 }
 
 .title.is-2 {

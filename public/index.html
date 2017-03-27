@@ -21,15 +21,19 @@
     body {
         margin: 0 auto;
         width: 50%;
-        margin-top: 100px;
+        margin-top: 200px;
     }
 </style>
 <body>
-  <h1>Login to Chat</h1>
+  <div class="notification is-warning is-disabled">
+    <span class="icon">
+</span>
+  <h1 class="title is-1 is-spaced">CHAT LOGIN </h1>
+</div>
   <form action="/app.html" autocomplete="off">
-    <label for="name">Choice a name: </label>
-    <input type="text" name="name" id="username" required>
-    <input type="submit">
+    <label for="name" class="label">Chat Name </label>
+    <input type="text" name="name" id="username" class="input" required>
+    <input type="submit" class="input is-info is-active">
   </form>
 </body>
 </html>

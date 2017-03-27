@@ -23,9 +23,9 @@ nameChange.addEventListener('click', function() {
 var socket = io();
 // Successful connection made to the server
 socket.on('connect', function() {
-  socket.emit('joined', {
-    name: name
-  });
+    socket.emit('joined', {
+        name: name
+    });
     //console.log('Connected to socket.io server');
 });
 
@@ -40,14 +40,10 @@ socket.on('chat message', function(data) {
     console.log(data.text);
     var parent = document.getElementById('childElement').parentNode;
     var newNode = document.createElement("p");
-    newNode.innerHTML = data.name +
+    newNode.innerHTML = '<p class="button is-disabled">' + '#' + data.name + '</p>' +
         ' - ' + ' ' +
-        '<b>'+timestamp + '</b>' +
-        ' ' + data.text;
+    ' ' + '<p class="button">' + data.text + '</p>'  +' ' + ' <b class="button is-warning is-disabled">' + ' ' + timestamp + '</b>';
     parent.appendChild(newNode);
-    usr.innerHTML += data.name;
-      usrHash.innerHTML += data.name;
-
 });
 
 // add event listener for form submission
