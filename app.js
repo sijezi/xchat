@@ -11,11 +11,12 @@ var http = require('http').Server(app);
 var socket = require('socket.io')(http);
 var qs = require('qs');
 var name = '';
-//var url = require('url');
+
+// grab the Query String from the browser
 app.get('/app.html', function(req, res) {
-    //console.log(req.query.name);
-name = req.query.name;
-console.log(name)
+    // grab the query string and store it
+    name = req.query.name;
+    console.log(name)
     //res.send('Response sent to client::'+ req.query.name);
     res.sendFile(__dirname + "/public/" + "app.html");
 });
@@ -24,8 +25,7 @@ var name = qs.parse('name');
 // middleware for rendering
 app.use(express.static(__dirname + '/public'));
 
-//console.log(req.query.name);
-
+// error checking
 app.use(function(err, req, next) {
     if (err.status !== 404) {
         return next();
@@ -33,21 +33,21 @@ app.use(function(err, req, next) {
     res.send(err.message || '** No Errors Found **');
 });
 
+// when a connection is established with socket.io
 socket.on('connection', function(connection) {
-    console.log('User connected via socket.io');
+    console.log('user is connected');
     connection.on('chat message', function(data) {
-        console.log('Message Recieved: ' + data.text);
         // send to everyone
         socket.emit('chat message', {
-          text: data.text,
-          name: data.name
+            text: data.text,
+            name: data.name
         });
     });
 
     // data to be passed to the frontend
     connection.emit('chat message', {
         name: name,
-        text: 'You can chat!'
+        text: 'just logged into this chatroom!'
     });
 });
 

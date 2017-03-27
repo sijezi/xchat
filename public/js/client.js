@@ -3,6 +3,8 @@ var form = document.getElementById('chat-form');
 var input = document.getElementById('msg');
 var usr = document.querySelector('.is-5');
 var usrHash = document.querySelector('.is-6');
+var parent = document.getElementById('childElement').parentNode;
+var newNode = document.createElement("p");
 
 /*
  * grab query string params
@@ -20,26 +22,26 @@ nameChange.addEventListener('click', function() {
     window.history.back();
 });
 
+// socket.io client-side api
 var socket = io();
 // Successful connection made to the server
 socket.on('connect', function() {
     socket.emit('joined', {
         name: name
     });
-    //console.log('Connected to socket.io server');
 });
 
+// send data to the client-side
 socket.on('chat message', function(data) {
     // pure javascript timestamp
     var now = new Date();
     console.log(data.name)
     // convert timestamp to human readable format
     var timestamp = now.toLocaleTimeString();
-
-    console.log('New Message');
-    console.log(data.text);
     var parent = document.getElementById('childElement').parentNode;
     var newNode = document.createElement("p");
+    console.log('New Message');
+    console.log(data.text);
     newNode.innerHTML = '<p class="button is-disabled">' + '#' + data.name + '</p>' +
         ' - ' + ' ' +
     ' ' + '<p class="button">' + data.text + '</p>'  +' ' + ' <b class="button is-warning is-disabled">' + ' ' + timestamp + '</b>';
