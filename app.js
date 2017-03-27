@@ -12,7 +12,13 @@ var socket = require('socket.io')(http);
 var qs = require('qs');
 var name = '';
 
-// grab the Query String from the browser
+/**
+ * grab the Query String from the browser
+ *
+ * @param  {string} '/app.html'  url path
+ * @param  {object} function(req request
+ * @param  {Object} res  the response
+ */
 app.get('/app.html', function(req, res) {
     // grab the query string and store it
     name = req.query.name;
@@ -21,6 +27,7 @@ app.get('/app.html', function(req, res) {
     res.sendFile(__dirname + "/public/" + "app.html");
 });
 
+// grab the query string
 var name = qs.parse('name');
 // middleware for rendering
 app.use(express.static(__dirname + '/public'));

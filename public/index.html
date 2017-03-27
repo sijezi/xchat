@@ -14,6 +14,7 @@
     <meta name="theme-color" content="#ffffff">
     <!-- Libs -->
     <script src="./lib/jquery-3.2.0.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/bulma.css">
     <title>socket.io chat</title>
 </head>
@@ -31,9 +32,59 @@
   <h1 class="title is-1 is-spaced">CHAT LOGIN </h1>
 </div>
   <form action="/app.html" autocomplete="off">
-    <label for="name" class="label">Chat Name </label>
+    <label for="name" class="label">Name </label>
     <input type="text" name="name" id="username" class="input" required>
     <input type="submit" class="input is-info is-active">
   </form>
+  <br>
+  <br>
+  <!-- Footer -->
+  <!-- <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <a class="icon" href="https://github.com/sijezi">
+          <i class="fa fa-github"></i>
+        </a>
+        <a class="icon" href="https://twitter.com/leyth_">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="icon" href="https://www.linkedin.com/in/leyth/">
+          <i class="fa fa-linkedin"></i>
+        </a>
+      </p>
+    </div>
+</footer> -->
+<div class="box">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+        <!-- <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image"> -->
+      </figure>
+    </div>
+    <div class="media-content is-info">
+      <div class="content">
+        <p>
+          <br>
+          A realtime chat application that is built with Node.JS and socket.io. It simplifies online communciation
+          by focusing on having as few moving parts as possible.
+          <br>
+        </p>
+      </div>
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <a class="level-item">
+            <span class="icon is-small"><i class="fa fa-linkedin"></i></span>
+          </a>
+          <a class="level-item">
+            <span class="icon is-small"><i class="fa fa-github"></i></span>
+          </a>
+          <a class="level-item">
+            <span class="icon is-small"><i class="fa fa-twitter"></i></span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </article>
+</div>
 </body>
 </html>
