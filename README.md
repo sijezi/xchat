@@ -16,3 +16,6 @@ http.listen(3000, function(){
 ```
 
 ![image](public/img/app.png)
+
+- - -
+![image](public/img/chat.gif)
